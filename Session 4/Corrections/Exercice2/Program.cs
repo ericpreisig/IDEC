@@ -85,9 +85,9 @@ namespace Exercice2
                 if (scores[i] == currentUserScore)
                 {
                     int startIndex = Math.Max(i - 2, 0);
-                    int endIndex = Math.Min(i + 2, scores.Count-1);
+                    int endIndex = Math.Min(i + 2, scores.Count - 1);
 
-                    for(int j = startIndex; j <= endIndex; j++)
+                    for (int j = startIndex; j <= endIndex; j++)
                     {
                         Console.WriteLine(scores[j]);
                     }
