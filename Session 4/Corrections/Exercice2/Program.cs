@@ -1,4 +1,6 @@
-﻿namespace Exercice2
+﻿using System.Collections.Generic;
+
+namespace Exercice2
 {
     internal class Program
     {
@@ -55,8 +57,26 @@
             List<string> scores = File.ReadAllLines("score.txt").ToList();
 
             string currentUserScore = scores.Last();
+            string temp;
 
-            scores.Sort();
+            for (int i = 0; i < scores.Count - 1; i++)
+            {
+                for (int j = i + 1; j < scores.Count; j++)
+                {
+                    string[] splitedScore1 = scores[i].Split(" - ");
+                    int score1 = int.Parse(splitedScore1[0]);
+
+                    string[] splitedScore2 = scores[j].Split(" - ");
+                    int score2 = int.Parse(splitedScore2[0]);
+
+                    if (score1 < score2)
+                    {
+                        temp = scores[i];
+                        scores[i] = scores[j];
+                        scores[j] = temp;
+                    }
+                }
+            }
 
             Console.WriteLine("< Affichage des scores >");
 
