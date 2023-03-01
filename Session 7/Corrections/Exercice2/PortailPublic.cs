@@ -38,19 +38,28 @@ namespace Exercice2
                     Buy();
                     break;
                 case 7:
-                    Console.Write("Enter le mot de passe : ");
-                    var portail = new PortailPrive();
-                    if (portail.CheckPassword(Console.ReadLine()))
-                    {
-                        Console.Clear();
-                        portail.Menu();
-                    }
+                    GoToPrivatePorail();
                     break;
             }
 
             Console.ReadLine();
             Console.Clear();
             Menu();
+        }
+
+        private static void GoToPrivatePorail()
+        {
+            Console.Write("Enter le mot de passe : ");
+            var portail = new PortailPrive();
+            if (portail.CheckPassword(Console.ReadLine()))
+            {
+                Console.Clear();
+                portail.Menu();
+            }
+            else
+            {
+                Console.WriteLine("Mot de passe incorecte");
+            }
         }
 
         protected void Buy()

@@ -227,7 +227,7 @@ namespace Exercice2
         {
             double totalSumSales = _stock.GetAll().Where(p => p.IsVendu).Sum(p => p.Prix);
 
-            Console.WriteLine($"Le total des ventes est de {totalSumSales}");
+            Console.WriteLine($"Le total des ventes est de {totalSumSales} CHF");
         }
     }
 }
