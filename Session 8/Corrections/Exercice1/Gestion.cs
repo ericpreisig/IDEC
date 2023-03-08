@@ -152,6 +152,11 @@ namespace Exercice2
 
         private void Display(Produit produit)
         {
+            if (produit == null)
+            {
+                Console.WriteLine("Aucun produit valide à afficher");
+                return;
+            }
             Console.WriteLine($"Type : {GetTypeName(produit)}");
             Console.WriteLine($"Reference : {produit.NumeroReference}");
             Console.WriteLine($"Nom : {produit.Nom}");
