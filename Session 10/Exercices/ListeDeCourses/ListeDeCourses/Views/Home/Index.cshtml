@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-action="ListeCourses">
+    <ol>
+        <li>
+            <input type="checkbox" name="articles" value="Lait" />
+            <label>Lait</label>
+        </li>
+        <li>
+            <input type="checkbox" name="articles" value="Pain" />
+            <label>Pain</label>
+        </li>
+        <li>
+            <input type="checkbox" name="articles" value="Oeufs" />
+            <label>Oeufs</label>
+        </li>
+        <li>
+            <input type="checkbox" name="articles" value="Fromage" />
+            <label>Fromage</label>
+        </li>
+        <li>
+            <input type="checkbox" name="articles" value="Fruits" />
+            <label>Fruits</label>
+        </li>
+        <li>
+            <label>Autre</label>
+            <input type="text" name="articles" />
+        </li>
+    </ol>
+    <button>Envoyer</button>
+</form>
