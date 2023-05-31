@@ -1,0 +1,15 @@
+﻿@model UserUpdateViewModel
+
+<h1>Mise à jour du compte</h1>
+
+<form asp-action="Update" asp-route-Id="@Model.Id">
+    <div>
+        <label>Nouveau login</label>
+        <input type="text" name="login" />
+    </div>
+    <div>
+        <label>Nouveau mot de passe</label>
+        <input type="text" name="password" />
+    </div>
+    <button>Mettre à jour</button>
+</form>

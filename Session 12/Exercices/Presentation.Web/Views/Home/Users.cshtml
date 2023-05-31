@@ -1,0 +1,8 @@
+﻿@model UsersViewModel
+
+<h1>Liste des utilisateurs</h1>
+
+@foreach(var user in Model.Logins)
+{
+    <li>@user</li>
+}
