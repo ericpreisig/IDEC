@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Ma Liste de Tâche !</h1>
+
+    <button onclick="AddTask()">Ajouter une tâche</button>
+    <button onclick="DisplayTaskNumber()">Afficher le nombre de tâches</button>
+    <button onclick="DeleteAll()">Supprimer tout</button>
+
+    <form id="ToDoList">
+
+    </form>
+</div>
+
+<style>
+    input {
+        display:block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+    }
+</style>
+
+<script>
+    var numberOfTask = 0;
+
+    function AddTask()
+    {
+        var element = document.getElementById("ToDoList");
+
+        var newTask = document.createElement("input");
+        newTask.placeholder = "Nom de la tâche";
+
+        element.appendChild(newTask);
+
+        numberOfTask++;
+    }
+
+    function DisplayTaskNumber()
+    {
+        alert("Il y a " + numberOfTask + " tâches");
+    }
+
+    function DeleteAll() 
+    {
+        var element = document.getElementById("ToDoList");
+
+        element.innerHTML= "";
+        numberOfTask = 0;
+    }
+</script>
