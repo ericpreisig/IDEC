@@ -37,7 +37,7 @@ namespace Exercice1
 
         public override void Afficher()
         {
-            Afficher(this, "Lettre");
+            Afficher("Lettre");
             Console.WriteLine($"Format : {Format}");
         }
     }

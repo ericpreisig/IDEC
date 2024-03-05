@@ -18,7 +18,7 @@
 
         public override void Afficher()
         {
-            Afficher(this, "Publicité");
+            Afficher("Publicité");
         }
     }
 }

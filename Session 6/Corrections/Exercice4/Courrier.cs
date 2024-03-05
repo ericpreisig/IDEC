@@ -14,19 +14,19 @@
             return !string.IsNullOrWhiteSpace(Adresse);
         }
 
-        protected void Afficher(Courrier courrier, string nom)
+        protected void Afficher(string nom)
         {
             Console.WriteLine(nom);
 
-            if (!courrier.IsValid())
+            if (!IsValid())
             {
                 Console.WriteLine("(Courrier  invalide)");
             }
 
-            Console.WriteLine($"Poids: {courrier.Poids} grammes");
+            Console.WriteLine($"Poids: {Poids} grammes");
             Console.Write($"Express:");
 
-            if (courrier.ModeExpedition == ModeExpedition.Express)
+            if (ModeExpedition == ModeExpedition.Express)
             {
                 Console.WriteLine("Oui");
             }
@@ -35,8 +35,8 @@
                 Console.WriteLine("Non");
             }
 
-            Console.WriteLine($"Destination: {courrier.Adresse}");
-            Console.WriteLine($"Prix: {courrier.PrixAffranchissement()}CHF");
+            Console.WriteLine($"Destination: {Adresse}");
+            Console.WriteLine($"Prix: {PrixAffranchissement()}CHF");
         }
     }
 }

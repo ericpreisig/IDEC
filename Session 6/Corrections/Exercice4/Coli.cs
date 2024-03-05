@@ -26,7 +26,7 @@ namespace Exercice1
         }
         public override void Afficher()
         {
-            Afficher(this, "Coli");
+            Afficher("Coli");
             Console.WriteLine($"Volume : {Volume} litres");
         }
     }
