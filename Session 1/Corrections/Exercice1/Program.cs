@@ -1,12 +1,12 @@
 ﻿// on fera mieux plus tard !
-int ANNEE_COURANTE = 2023;
+int ANNEE_COURANTE = 2025;
 
-Console.WriteLine("Quel est votre age ?");
+Console.WriteLine("Quel est votre année de naissance ?");
 
-int age = int.Parse(Console.ReadLine());
+int annee = int.Parse(Console.ReadLine());
 
-double annee = ANNEE_COURANTE - age;
+double age = ANNEE_COURANTE - annee;
 
-Console.WriteLine("Votre annee de naissance est : " + annee);
+Console.WriteLine("Vous êtes dans l'année de vos " + age + " ans");
 
 Console.ReadLine();
