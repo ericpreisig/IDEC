@@ -4,11 +4,11 @@
 
     static void Main(string[] args)
     {
-        Console.Write("Quel est le prix total : ");
+        Console.Write("Quel est le prix HT : ");
         double prix = double.Parse(Console.ReadLine());
 
         double prixTva = prix * TVA / 100;
-        Console.WriteLine("HT : " + (prix - prixTva));
+        Console.WriteLine("TTC : " + (prix + prixTva));
         Console.WriteLine("TVA : " + prixTva);
 
         Console.ReadLine();
