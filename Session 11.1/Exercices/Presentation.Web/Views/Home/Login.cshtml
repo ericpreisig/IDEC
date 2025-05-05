@@ -1,0 +1,8 @@
+﻿@model UserViewModel
+
+<h1>Interface utilisateur</h1>
+
+Bonjour @Model.Login <br />
+
+<a asp-action="DeleteAccount" asp-route-id="@Model.Id">Supprimer mon Compte</a>
+<a asp-action="UpdateAccount" asp-route-id="@Model.Id">Modifier mon Compte</a>

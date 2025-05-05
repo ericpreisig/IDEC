@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>Connexion</h1>
+
+<form asp-action="Login">
+    <div>
+        <label>Login</label>
+        <input type="text" name="login" />
+    </div>
+    <div>
+        <label>Mot de passe</label>
+        <input type="password" name="password" />
+    </div>
+    <button>Se connecter</button>
+</form>
+
+
+<a asp-action="NewAccount">Créer un nouveau compte</a>
+<a asp-action="Users">Afficher tous les utilisateurs</a>
