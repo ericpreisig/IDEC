@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://web.archive.org/web/20231129052052/https://blog.christian-schou.dk/csharp-cheat-sheet/ -->
+<html lang="en" data-color-scheme="light" style="--wm-toolbar-height: 107px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <meta name="generator" content="Ghost 5.74">
+    <link rel="alternate" type="application/rss+xml" title="Tech with Christian" href="https://web.archive.org/web/20231129052052/https://blog.christian-schou.dk/rss/">
+    <script defer="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/portal.min.js.télécharger" data-i18n="false" data-ghost="https://blog.christian-schou.dk/" data-key="d0c7ceec837325c2faeb16664b" data-api="https://blog.christian-schou.dk/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><script async="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/saved_resource"></script>
+    <script defer="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/sodo-search.min.js.télécharger" data-key="d0c7ceec837325c2faeb16664b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://blog.christian-schou.dk/" crossorigin="anonymous"></script>
+    
+    <link href="https://blog.christian-schou.dk/webmentions/receive/" rel="webmention">
+    <script defer="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/cards.min.js.télécharger"></script>
+    <link rel="stylesheet" type="text/css" href="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/cards.min.css">
+    <script defer="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/comment-counts.min.js.télécharger" data-ghost-comments-counts-api="https://blog.christian-schou.dk/members/api/comments/counts/"></script>
+    <script defer="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/member-attribution.min.js.télécharger"></script>
+    <script async="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/script.js.télécharger" data-website-id="a3d3ec03-6dbf-4c69-8de0-1b0a832e8150"></script>
+<link rel="stylesheet" href="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/prism-v1.css">
+<style> body { --global-content-preview-fading: 300px; }</style>
+
+
+<style>
+    code[class*=language-], pre[class*=language-] {
+        font-size: 16px !important;
+    }
+</style>
+
+<style>
+    pre[class*="language-"],
+code[class*="language-"] {
+	color: #d4d4d4;
+	font-size: 13px;
+	text-shadow: none;
+	font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::selection,
+code[class*="language-"]::selection,
+pre[class*="language-"] *::selection,
+code[class*="language-"] *::selection {
+	text-shadow: none;
+	background: #264F78;
+}
+
+@media print {
+	pre[class*="language-"],
+	code[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	background: #1e1e1e;
+}
+
+:not(pre) > code[class*="language-"] {
+	padding: .1em .3em;
+	border-radius: .3em;
+	color: #db4c69;
+	background: #1e1e1e;
+}
+/*********************************************************
+* Tokens
+*/
+.namespace {
+	opacity: .9;
+}
+
+.token.doctype .token.doctype-tag {
+	color: #569CD6;
+}
+
+.token.doctype .token.name {
+	color: #9cdcfe;
+}
+
+.token.comment,
+.token.prolog {
+	color: #6a9955;
+}
+
+.token.punctuation,
+.language-html .language-css .token.punctuation,
+.language-html .language-javascript .token.punctuation {
+	color: #d4d4d4;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.inserted,
+.token.unit {
+	color: #b5cea8;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.deleted {
+	color: #ce9178;
+}
+
+.language-css .token.string.url {
+	text-decoration: underline;
+}
+
+.token.operator,
+.token.entity {
+	color: #d4d4d4;
+}
+
+.token.operator.arrow {
+	color: #569CD6;
+}
+
+.token.atrule {
+	color: #ce9178;
+}
+
+.token.atrule .token.rule {
+	color: #c586c0;
+}
+
+.token.atrule .token.url {
+	color: #9cdcfe;
+}
+
+.token.atrule .token.url .token.function {
+	color: #dcdcaa;
+}
+
+.token.atrule .token.url .token.punctuation {
+	color: #d4d4d4;
+}
+
+.token.keyword {
+	color: #569CD6;
+}
+
+.token.keyword.module,
+.token.keyword.control-flow {
+	color: #c586c0;
+}
+
+.token.function,
+.token.function .token.maybe-class-name {
+	color: #dcdcaa;
+}
+
+.token.regex {
+	color: #d16969;
+}
+
+.token.important {
+	color: #569cd6;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.constant {
+	color: #9cdcfe;
+}
+
+.token.class-name,
+.token.maybe-class-name {
+	color: #4ec9b0;
+}
+
+.token.console {
+	color: #9cdcfe;
+}
+
+.token.parameter {
+	color: #9cdcfe;
+}
+
+.token.interpolation {
+	color: #9cdcfe;
+}
+
+.token.punctuation.interpolation-punctuation {
+	color: #569cd6;
+}
+
+.token.boolean {
+	color: #569cd6;
+}
+
+.token.property,
+.token.variable,
+.token.imports .token.maybe-class-name,
+.token.exports .token.maybe-class-name {
+	color: #9cdcfe;
+}
+
+.token.selector {
+	color: #d7ba7d;
+}
+
+.token.escape {
+	color: #d7ba7d;
+}
+
+.token.tag {
+	color: #569cd6;
+}
+
+.token.tag .token.punctuation {
+	color: #808080;
+}
+
+.token.cdata {
+	color: #808080;
+}
+
+.token.attr-name {
+	color: #9cdcfe;
+}
+
+.token.attr-value,
+.token.attr-value .token.punctuation {
+	color: #ce9178;
+}
+
+.token.attr-value .token.punctuation.attr-equals {
+	color: #d4d4d4;
+}
+
+.token.entity {
+	color: #569cd6;
+}
+
+.token.namespace {
+	color: #FFFFFF;
+}
+/*********************************************************
+* Language Specific
+*/
+
+pre[class*="language-javascript"],
+code[class*="language-javascript"],
+pre[class*="language-jsx"],
+code[class*="language-jsx"],
+pre[class*="language-typescript"],
+code[class*="language-typescript"],
+pre[class*="language-tsx"],
+code[class*="language-tsx"] {
+	color: #9cdcfe;
+}
+
+pre[class*="language-css"],
+code[class*="language-css"] {
+	color: #ce9178;
+}
+
+pre[class*="language-html"],
+code[class*="language-html"] {
+	color: #d4d4d4;
+}
+
+.language-regex .token.anchor {
+	color: #dcdcaa;
+}
+
+.language-html .token.punctuation {
+	color: #808080;
+}
+/*********************************************************
+* Line highlighting
+*/
+pre[class*="language-"] > code[class*="language-"] {
+	position: relative;
+	z-index: 1;
+}
+
+.line-highlight.line-highlight {
+	background: #404040;
+	box-shadow: inset 5px 0 0 #404040;
+	z-index: 0;
+}
+    
+content-preview {
+    position: relative;
+}
+.content-preview::after {
+    content: "";
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(180deg,transparent 0,var(--c-body-bg) 100%);
+    position: absolute;
+    bottom: 0;
+}
+</style>
+
+    <main class="container wrapper main">
+      
+    <div class="hero is-featured p-t-lg border-top-1" style="--color-accent: #953DAB">
+    <div class="hero__content flex flex-col flex-cc m-b">
+        <div class="hero__info flex flex-cc text-acc-3 fw-500 m-b">
+          <span>Apr 4, 2023</span>
+          <span class="m-l-sm m-r-sm separator-dot">•</span>
+          <span>18 min read</span>
+            <span class="featured m-l-sm"><i class="icon icon-star icon--xs">
+  <svg class="icon__svg">
+    <use xlink:href="/web/20231129052052im_/https://blog.christian-schou.dk/assets/icons/icon-sprite.svg?v=b563cfac27#star"></use>
+  </svg>
+</i></span>
+        </div>
+
+      <h1 class="hero__title text-center">The Ultimate Cheat Sheet for C#</h1>
+
+          <p class="hero__descr text-acc-3 m-b">
+            Looking to improve your C# programming skills? Look no further than this C# ultimate cheat sheet! Covering everything from the basics to advanced features, with real-world code examples. Learn object-oriented programming, collections, exception handling, file I/O, LINQ, multithreading, and more...
+          </p>
+
+        <div class="hero__details flex text-acc-3"> 
+<a class="post-card__author" href="https://web.archive.org/web/20231129052052/https://blog.christian-schou.dk/author/christian/">                  <img class="lazyload" data-sizes="auto" data-src="/content/images/size/w100/2023/06/christian-schou-optimized.jpeg" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/christian-schou-optimized.jpeg" alt="Christian Schou">
+                <span class="fw-600">Christian Schou</span>
+</a>        </div>
+
+    </div>
+
+      <div class="hero__media wide">
+        <figure class="hero__figure">
+          <img class="lazyload hero__img" data-srcset="/web/20231129052052im_/https://blog.christian-schou.dk/content/images/size/w300/2023/04/csharp-cheatsheet-featured-image.webp 300w, /web/20231129052052im_/https://blog.christian-schou.dk/content/images/size/w600/2023/04/csharp-cheatsheet-featured-image.webp 600w, /web/20231129052052im_/https://blog.christian-schou.dk/content/images/size/w1000/2023/04/csharp-cheatsheet-featured-image.webp 1000w, /web/20231129052052im_/https://blog.christian-schou.dk/content/images/size/w2000/2023/04/csharp-cheatsheet-featured-image.webp 2000w" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/content/images/size/w300/2023/04/csharp-cheatsheet-featured-image.webp" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/csharp-cheatsheet-featured-image.webp" alt="The Ultimate Cheat Sheet for C#">
+        </figure>
+      </div>
+  </div>
+
+  <article class="post tag-csharp featured content-wrap post-access-public js-toc-content">
+    <div class="content">
+      <p>Are you in the process of learning to write C# code or are you just looking for a piece of code to help you out? No matter if you are a novice or an expert, we often forget how some specific function has to be written.</p><p>C# is a modern, object-oriented programming language developed by Microsoft. It is widely used for developing Windows desktop applications, web applications, and games. C# is known for its simplicity, type safety, and scalability, making it an ideal choice for both beginner and advanced programmers.</p><p>As with any programming language, C# has its own syntax and rules that need to be understood to write effective code. While there are many resources available for learning C#, having a comprehensive cheat sheet can be incredibly helpful for quickly referencing key concepts, syntax, and best practices.</p><p>In this ultimate cheat sheet for C#, I'll cover everything you need to know to start writing C# code like a pro. From the basics of <strong>data types</strong>, <strong>variables</strong>, and <strong>control flow statements</strong>, to more advanced topics like <strong>object-oriented programming</strong>, <strong>multithreading</strong>, and <strong>LINQ</strong>, this cheatsheet has got you covered.</p><p>Whether you're a beginner looking to learn the basics of C#, or an experienced programmer looking for a quick reference guide, this cheat sheet will help you write better, more efficient code in C#. So let's get started! Happy coding 👨‍💻</p><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-emoji">🤓</div><div class="kg-callout-text">If you got any suggestions for this C# Cheatsheet, please let me know in the comments below or by sending me a message. I will continuously update this post with extra snippets and help for C#.</div></div><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="introduction">Introduction</h2><h3 class="kg-header-card-subheader" id="writing-a-simple-hello-world-program-using-basic-techniques">Writing a simple "Hello World" program using basic techniques</h3></div><h2 id="what-is-cin-a-nutshell">What is C# - In a nutshell?</h2><p>C# is a simple, type-safe, general-purpose, <a href="https://web.archive.org/web/20231129052052/https://en.wikipedia.org/wiki/Object-oriented_programming?ref=blog.christian-schou.dk" target="_blank">object-oriented programming</a> language created (<em>in the early 2000s</em>) and maintained by <a href="https://web.archive.org/web/20231129052052/https://en.wikipedia.org/wiki/Microsoft?ref=blog.christian-schou.dk" target="_blank">Microsoft</a>. The project is led by a Danish guy named <a href="https://web.archive.org/web/20231129052052/https://en.wikipedia.org/wiki/Anders_Hejlsberg?ref=blog.christian-schou.dk" target="_blank">Anders Hejlsberg</a> (<em>yes, I'm a little proud to be a Dane right now</em>).</p><p>C# is an object-oriented language, which means that it is based on the concept of classes and objects. It also features automatic memory management through the use of a garbage collector, which helps to simplify the development process and reduce the risk of memory leaks.</p><h3 id="why-a-cheat-sheet-for-c-is-useful">Why a cheat sheet for C# is useful</h3><p>C# is a powerful and versatile language, but it can also be complex and challenging to learn. A cheat sheet for C# can help beginners and experienced programmers alike to quickly reference key concepts and syntax, saving time and reducing the risk of errors.</p><h3 id="a-brief-overview-of-what-will-be-covered-in-the-cheat-sheet">A brief overview of what will be covered in the cheat sheet</h3><p>In this cheat sheet, we will cover a range of topics related to C#, from basic syntax and object-oriented programming concepts to collections, input/output, exception handling, LINQ, delegates and events, and asynchronous programming. I'll provide a brief overview of each topic and include examples and code snippets to help you get started with C# programming.</p><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="basics-of-c">Basics of C#</h2></div><p>To write effective code in C#, it's important to first understand the basics. In this section of the ultimate C# cheatsheet, we'll cover the fundamental concepts of the language, including data types, variables, operators, and control flow statements.</p><h3 id="variables-data-types">Variables Data Types</h3><p>In C#, variables are used to store data values that can be used and manipulated throughout your program. There are several different data types that you can use in C#, including:</p><ul><li><code>int</code> - used to store integer values.</li><li><code>float</code> - used to store floating-point values.</li><li><code>double</code> - used to store larger floating-point values.</li><li><code>bool</code> - used to store true/false values.</li><li><code>string</code> - used to store text values.</li></ul><p>Here's an example of declaring and using variables in C#:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">int</span></span> myNumber <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">float</span></span> myFloat <span class="token operator">=</span> <span class="token number">3.14f</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">double</span></span> myDouble <span class="token operator">=</span> <span class="token number">1.23456789</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> myBool <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">string</span></span> myString <span class="token operator">=</span> <span class="token string">"Hello, world! This is Tech with Christian :)"</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="operators">Operators</h3><p>Operators are symbols used to perform mathematical or logical operations on data in a program. C# includes a variety of operators, including arithmetic operators (+, -, *, /), comparison operators (&gt;, &lt;, ==), and logical operators (&amp;&amp;, ||, !). Below are some examples for your reference.</p><p><strong>Arithmetic Operators</strong></p><p>Arithmetic operators are used to performing mathematical operations such as addition, subtraction, multiplication, and division. Here are some examples of arithmetic operators in C#:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">int</span></span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">int</span></span> b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">int</span></span> sum <span class="token operator">=</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>    <span class="token comment">// addition</span>
+<span class="token class-name"><span class="token keyword">int</span></span> difference <span class="token operator">=</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>    <span class="token comment">// subtraction</span>
+<span class="token class-name"><span class="token keyword">int</span></span> product <span class="token operator">=</span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>    <span class="token comment">// multiplication</span>
+<span class="token class-name"><span class="token keyword">int</span></span> quotient <span class="token operator">=</span> a <span class="token operator">/</span> b<span class="token punctuation">;</span>    <span class="token comment">// division</span>
+<span class="token class-name"><span class="token keyword">int</span></span> remainder <span class="token operator">=</span> a <span class="token operator">%</span> b<span class="token punctuation">;</span>    <span class="token comment">// modulus (returns the remainder of a division operation)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p><strong>Comparison Operators</strong></p><p>Comparison operators are used to compare two values and return a boolean value ( <code>true</code> or <code>false</code> ) based on the comparison. Here are some examples of comparison operators in C#:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">int</span></span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">int</span></span> b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">bool</span></span> isEqual <span class="token operator">=</span> a <span class="token operator">==</span> b<span class="token punctuation">;</span>    <span class="token comment">// equal to</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> isNotEqual <span class="token operator">=</span> a <span class="token operator">!=</span> b<span class="token punctuation">;</span>    <span class="token comment">// not equal to</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> isGreater <span class="token operator">=</span> a <span class="token operator">&gt;</span> b<span class="token punctuation">;</span>    <span class="token comment">// greater than</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> isLess <span class="token operator">=</span> a <span class="token operator">&lt;</span> b<span class="token punctuation">;</span>    <span class="token comment">// less than</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> isGreaterOrEqual <span class="token operator">=</span> a <span class="token operator">&gt;=</span> b<span class="token punctuation">;</span>    <span class="token comment">// greater than or equal to</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> isLessOrEqual <span class="token operator">=</span> a <span class="token operator">&lt;=</span> b<span class="token punctuation">;</span>    <span class="token comment">// less than or equal to</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p><strong>Logical Operators</strong></p><p>Logical operators are used to performing logical operations on boolean values. Here are some examples of logical operators in C#:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">bool</span></span> a <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> b <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">bool</span></span> andResult <span class="token operator">=</span> a <span class="token operator">&amp;&amp;</span> b<span class="token punctuation">;</span>    <span class="token comment">// logical AND</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> orResult <span class="token operator">=</span> a <span class="token operator">||</span> b<span class="token punctuation">;</span>    <span class="token comment">// logical OR</span>
+<span class="token class-name"><span class="token keyword">bool</span></span> notResult <span class="token operator">=</span> <span class="token operator">!</span>a<span class="token punctuation">;</span>    <span class="token comment">// logical NOT</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p><strong>Assignment Operators</strong></p><p>Assignment operators are used to assigning a value to a variable. Here are some examples of assignment operators in C#:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">int</span></span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">int</span></span> b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+a <span class="token operator">+=</span> b<span class="token punctuation">;</span>    <span class="token comment">// equivalent to a = a + b</span>
+a <span class="token operator">-=</span> b<span class="token punctuation">;</span>    <span class="token comment">// equivalent to a = a - b</span>
+a <span class="token operator">*=</span> b<span class="token punctuation">;</span>    <span class="token comment">// equivalent to a = a * b</span>
+a <span class="token operator">/=</span> b<span class="token punctuation">;</span>    <span class="token comment">// equivalent to a = a / b</span>
+a <span class="token operator">%=</span> b<span class="token punctuation">;</span>    <span class="token comment">// equivalent to a = a % b</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>These are just a few examples of the many operators available in C#. By understanding and mastering these operators, you'll be able to perform a wide variety of operations on variables and values in your C# programs.</p><h3 id="control-flow-statements">Control Flow Statements</h3><p>Control flow statements are used to control the flow of execution in a program. In C#, there are several control flow statements, including if-else statements, switch statements, and loops ( <code>for</code>, <code>while</code>, and <code>do-while</code> ).</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">int</span></span> myNumber <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>myNumber <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"The number is less than 5"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>myNumber <span class="token operator">&gt;</span> <span class="token number">15</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"The number is greater than 15"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"The number is between 5 and 15"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>Another common control structure is the for loop, which allows you to iterate through a set of values a certain number of times. Here's an example with a <code>for</code> loop:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"The value of i is: "</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="functions">Functions</h3><p>Functions are blocks of code that can be called from other parts of your program. They are useful for organizing your code and making it more reusable. Here's an example of a function that takes two integer parameters and returns their sum:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">AddNumbers</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> a<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>You can call this function from other parts of your code like this:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">int</span></span> result <span class="token operator">=</span> <span class="token function">AddNumbers</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"The result is: "</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>Understanding these basic concepts is essential for writing effective C# code. By mastering the basics, you'll be able to write more complex programs with confidence.</p><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="object-oriented-programming-in-c">Object-Oriented Programming in C#</h2></div><p>Object-oriented programming (OOP) is a programming paradigm that emphasizes the use of objects, classes, and inheritance to organize and structure code. C# is an object-oriented language and supports all the features of OOP. In this section of the ultimate C# cheatsheet, we'll cover the key concepts of OOP in C#, along with some code examples.</p><h3 id="classes-and-objects">Classes and Objects</h3><p>In C#, a class is a <strong>blueprint</strong> for creating objects. A class defines the <strong>properties</strong> and <strong>methods</strong> of an <strong>object</strong>, and an object is an instance of a class. Objects are used to store data and perform operations on that data.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">Person</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Age <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">SayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"Hello, my name is </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">Name</span><span class="token punctuation">}</span></span><span class="token string"> and I'm </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">Age</span><span class="token punctuation">}</span></span><span class="token string"> years old."</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Person</span> john <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+john<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">"John"</span><span class="token punctuation">;</span>
+john<span class="token punctuation">.</span>Age <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
+john<span class="token punctuation">.</span><span class="token function">SayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Hello, my name is John and I'm 30 years old.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="inheritance">Inheritance</h3><p>Inheritance is a key feature of OOP (<em>Object Oriented Programming</em>) that allows one class to inherit properties and methods from another class. In C#, a class can inherit from a single base class but can implement multiple interfaces.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">Animal</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">Name</span><span class="token punctuation">}</span></span><span class="token string"> is eating."</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">Animal</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">Name</span><span class="token punctuation">}</span></span><span class="token string"> is barking."</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Dog</span> fido <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+fido<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">"Fido"</span><span class="token punctuation">;</span>
+fido<span class="token punctuation">.</span><span class="token function">Eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Fido is eating.</span>
+fido<span class="token punctuation">.</span><span class="token function">Bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Fido is barking.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="polymorphism">Polymorphism</h3><p>Polymorphism is the ability of an object to take on many forms. In C#, polymorphism can be achieved through method overriding, where a subclass provides its own implementation of a method inherited from its parent class.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">Shape</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">virtual</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Drawing a shape."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Circle</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">Shape</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Drawing a circle."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">Shape</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Drawing a square."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Shape</span> shape1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Circle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape1<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Drawing a circle.</span>
+
+<span class="token class-name">Shape</span> shape2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Square</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+shape2<span class="token punctuation">.</span><span class="token function">Draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Drawing a square.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="abstraction">Abstraction</h3><p>Abstraction is the process of hiding unnecessary details while showing only the essential features of an object. In C#, abstraction can be achieved through abstract classes and interfaces.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Animal</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">MakeSound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">Animal</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">MakeSound</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Woof!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Animal</span> dog <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+dog<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">"Fido"</span><span class="token punctuation">;</span>
+dog<span class="token punctuation">.</span><span class="token function">MakeSound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Woof!</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="encapsulation">Encapsulation</h3><p>Encapsulation is the practice of restricting access to certain components of an object to prevent unwanted changes. In C#, encapsulation can be achieved through access modifiers such as <code>public</code>, <code>private</code>, and <code>protected</code>.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">BankAccount</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">double</span></span> balance<span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Deposit</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">double</span></span> amount<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        balance <span class="token operator">+=</span> amount<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Withdraw</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">double</span></span> amount<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>balance <span class="token operator">&gt;=</span> amount<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            balance <span class="token operator">-=</span> amount<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">double</span></span> <span class="token function">GetBalance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> balance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">BankAccount</span> account <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">BankAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+account<span class="token punctuation">.</span><span class="token function">Deposit</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+account<span class="token punctuation">.</span><span class="token function">Withdraw</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">double</span></span> balance <span class="token operator">=</span> account<span class="token punctuation">.</span><span class="token function">GetBalance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// balance is 500</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="strongc-collectionsstrong"><strong>C# Collections</strong></h2></div><p>Collections in C# are used to store groups of related objects. There are several types of collections available in C#, including arrays, lists, dictionaries, and sets.</p><h3 id="arrays">Arrays</h3><p>An <code>array</code> is a collection of elements of the same type. The length of an array is fixed and cannot be changed once it is created.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> numbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">int</span></span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>numbers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 1</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>numbers<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 2</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>numbers<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 3</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="lists">Lists</h3><p>A list is a dynamic collection of elements of the same type. Unlike arrays, the length of a list can be changed after it is created.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> names <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+names<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">"Alice"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+names<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">"Bob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+names<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">"Charlie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>names<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: Bob</span>
+names<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span><span class="token string">"Charlie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>names<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 2</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="dictionaries">Dictionaries</h3><p>A dictionary is a <strong>collection</strong> of <code>key-value</code> pairs. Each key <strong>must be unique</strong>, and the value associated with a key can be any type.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name">Dictionary<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> ages <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Dictionary<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ages<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">"Alice"</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ages<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">"Bob"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ages<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">"Charlie"</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>ages<span class="token punctuation">[</span><span class="token string">"Bob"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 30</span>
+ages<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span><span class="token string">"Charlie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>ages<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 2</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="sets">Sets</h3><p>A set is a collection of unique elements. In C#, sets are implemented using the HashSet class.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name">HashSet<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> numbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">HashSet<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+numbers<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+numbers<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+numbers<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+numbers<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Adding a duplicate value has no effect</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>numbers<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 3</span>
+numbers<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>numbers<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Output: 2</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>I have used HashSets to make sure that I got a list of unique items without any duplicates. Let's say you have a large collection of data and you want to remove duplicates from it. One way to do this is to iterate through the collection and add each item to a HashSet. Since a HashSet can only contain unique values, any duplicates will automatically be removed.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// Create a list with some duplicate values</span>
+        <span class="token class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> numbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Create a HashSet and add all the numbers to it</span>
+        <span class="token class-name">HashSet<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> uniqueNumbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">HashSet<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> number <span class="token keyword">in</span> numbers<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            uniqueNumbers<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// Print out the unique numbers</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> number <span class="token keyword">in</span> uniqueNumbers<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>In this example, I create a List of integers with some duplicate values. I then create a <code>HashSet</code> and add all the numbers to it using a <code>foreach</code> loop. Since the <code>HashSet</code> <strong>can only contain unique values</strong>, any duplicates are automatically removed. Finally, we iterate over the <code>HashSet</code> and print out the unique numbers.</p><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="exception-handling-in-c">Exception Handling in C#</h2></div><p>In C#, exceptions are used to handle runtime errors that occur during program execution. Exception handling allows developers to gracefully handle errors and prevent program crashes.</p><h3 id="try-catch-blocks">Try-Catch Blocks</h3><p>A <code>try-catch</code> block is used to handle exceptions in C#. The code that might generate an exception is placed inside the <code>try</code> block, and any exceptions that are thrown are caught and handled by the <code>catch</code> block.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">try</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">int</span></span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token class-name"><span class="token keyword">int</span></span> y <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">/</span> x<span class="token punctuation">;</span> <span class="token comment">// This will throw a DivideByZeroException</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">DivideByZeroException</span> e<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Error: "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>Message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="finally-block">Finally Block</h3><p>A <code>finally</code> block can be used to execute code that should always be run, regardless of whether an exception is thrown or not.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">try</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Code that might throw an exception</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Error: "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>Message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">finally</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Code that should always be run</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="throwing-exceptions">Throwing Exceptions</h3><p>In C#, developers can also explicitly throw exceptions using the throw keyword. This can be useful when custom error handling is needed.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">try</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">string</span></span> input <span class="token operator">=</span> Console<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">string</span><span class="token punctuation">.</span><span class="token function">IsNullOrEmpty</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Exception</span><span class="token punctuation">(</span><span class="token string">"Input cannot be empty."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Error: "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>Message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="custom-exceptions">Custom Exceptions</h3><p>Developers can also create custom exception classes to handle specific types of errors.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CustomException</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">Exception</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">CustomException</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> message<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">base</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">try</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">int</span></span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token class-name"><span class="token keyword">int</span></span> y <span class="token operator">=</span> <span class="token number">10</span> <span class="token operator">/</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">CustomException</span><span class="token punctuation">(</span><span class="token string">"Custom exception message."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">CustomException</span> e<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Error: "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>Message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="strongfile-input-and-output-in-cstrong"><strong>File Input and Output in C#</strong></h2></div><p>C# provides a set of classes and methods that can be used to read from and write to files. This can be useful when working with data that needs to be persisted beyond the lifetime of the program.</p><h3 id="reading-from-a-file">Reading from a File</h3><p>The <code>StreamReader</code> class can be used to read data from a file. The code below demonstrates how to read all lines from a text file using <code>StreamReader</code>:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name">StreamReader</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">StreamReader</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">string</span></span> line<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>line <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">ReadLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="writing-to-a-file">Writing to a File</h3><p>The <code>StreamWriter</code> class can be used to write data to a file. The code below demonstrates how to write a string to a text file using <code>StreamWriter</code>:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name">StreamWriter</span> writer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">StreamWriter</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    writer<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="appending-to-a-file">Appending to a File</h3><p>To append to an existing file instead of overwriting it, pass <code>true</code> as the second argument to the <code>StreamWriter</code> constructor:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name">StreamWriter</span> writer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">StreamWriter</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    writer<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token string">"This line will be appended to the file."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="binary-files">Binary Files</h3><p>Binary files contain data that is not in human-readable form, such as images or audio files. The <code>BinaryReader</code> and <code>BinaryWriter</code> classes can be used to read and write binary data to a file. The code below demonstrates how to write binary data to a file:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name">BinaryWriter</span> writer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">BinaryWriter</span><span class="token punctuation">(</span>File<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"file.bin"</span><span class="token punctuation">,</span> FileMode<span class="token punctuation">.</span>Create<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> data <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x01</span><span class="token punctuation">,</span> <span class="token number">0x02</span><span class="token punctuation">,</span> <span class="token number">0x03</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    writer<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>To read binary data from a file, use the <code>BinaryReader</code> class:</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">using</span> <span class="token punctuation">(</span><span class="token class-name">BinaryReader</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">BinaryReader</span><span class="token punctuation">(</span>File<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"file.bin"</span><span class="token punctuation">,</span> FileMode<span class="token punctuation">.</span>Open<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> data <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">ReadBytes</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>BitConverter<span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="linq-in-c">LINQ in C#</h2></div><p>Language-Integrated Query (LINQ) is a powerful feature in C# that allows developers to query data from various sources using a common syntax. LINQ can be used with objects, arrays, collections, and databases.</p><h3 id="linq-syntax">LINQ Syntax</h3><p>The basic syntax of a LINQ query consists of three parts: the source of data, the query operation, and the result.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name"><span class="token keyword">var</span></span> result <span class="token operator">=</span> <span class="token keyword">from</span> item <span class="token keyword">in</span> source
+             <span class="token keyword">where</span> <span class="token class-name">condition</span>
+             <span class="token keyword">select</span> item<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="filtering-data">Filtering Data</h3><p>In this example, we will use LINQ to filter a list of integers.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> numbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">var</span></span> result <span class="token operator">=</span> <span class="token keyword">from</span> num <span class="token keyword">in</span> numbers
+             <span class="token keyword">where</span> <span class="token class-name">num</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span>
+             <span class="token keyword">select</span> num<span class="token punctuation">;</span>
+
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> num <span class="token keyword">in</span> result<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This will output the following:</p><div class="code-toolbar"><pre class="language-text line-numbers" tabindex="0"><code class="language-text">2
+4
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="projecting-data">Projecting Data</h3><p>In this example, we will use LINQ to project a list of strings to uppercase.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> words <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span> <span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">var</span></span> result <span class="token operator">=</span> <span class="token keyword">from</span> word <span class="token keyword">in</span> words
+             <span class="token keyword">select</span> word<span class="token punctuation">.</span><span class="token function">ToUpper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> word <span class="token keyword">in</span> result<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This will output the following:</p><div class="code-toolbar"><pre class="language-text line-numbers" tabindex="0"><code class="language-text">HELLO
+WORLD
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="joining-data">Joining Data</h3><p>In this example, we will use LINQ to join two lists of objects.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">Person</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Age <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">List<span class="token punctuation">&lt;</span>Person<span class="token punctuation">&gt;</span></span> people <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span>Person<span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Person</span> <span class="token punctuation">{</span> Name <span class="token operator">=</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span> Age <span class="token operator">=</span> <span class="token number">25</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Person</span> <span class="token punctuation">{</span> Name <span class="token operator">=</span> <span class="token string">"Bob"</span><span class="token punctuation">,</span> Age <span class="token operator">=</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Person</span> <span class="token punctuation">{</span> Name <span class="token operator">=</span> <span class="token string">"Charlie"</span><span class="token punctuation">,</span> Age <span class="token operator">=</span> <span class="token number">35</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> cities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span> <span class="token string">"Amsterdam"</span><span class="token punctuation">,</span> <span class="token string">"Berlin"</span><span class="token punctuation">,</span> <span class="token string">"Chicago"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token class-name"><span class="token keyword">var</span></span> result <span class="token operator">=</span> <span class="token keyword">from</span> person <span class="token keyword">in</span> people
+             <span class="token keyword">join</span> city <span class="token keyword">in</span> cities <span class="token keyword">on</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> equals city<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+             <span class="token keyword">select</span> <span class="token keyword">new</span> <span class="token punctuation">{</span> Name <span class="token operator">=</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> City <span class="token operator">=</span> city <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> item <span class="token keyword">in</span> result<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>Name <span class="token operator">+</span> <span class="token string">" - "</span> <span class="token operator">+</span> item<span class="token punctuation">.</span>City<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This will output the following:</p><div class="code-toolbar"><pre class="language-text line-numbers" tabindex="0"><code class="language-text">Alice - Amsterdam
+Bob - Berlin
+Charlie - Chicago
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="strongmultithreading-in-cstrong"><strong>Multithreading in C#</strong></h2></div><p>Multithreading is the process of executing multiple threads concurrently in a single process. Threads allow a program to perform multiple tasks at the same time, improving performance and responsiveness.</p><h3 id="threading-basics">Threading Basics</h3><p>A thread is a path of execution within a program. Every process has at least one thread, the main thread, which is created automatically when the process starts. Additional threads can be created to perform tasks in parallel with the main thread.</p><p>In other words. Threads are used to perform multiple tasks simultaneously in a program. By using threads, a program can achieve concurrency, which means that it can do multiple things at the same time. This can lead to improved performance and better responsiveness of the program, especially in cases where the program performs a lot of blocking or time-consuming operations. Below are two examples for you</p><ol><li>You are building a file-sharing application that allows users to upload and download files. When a user uploads a large file, the application may take a long time to process it. Without using threads, the application may become unresponsive to other users until the upload process is complete. However, if you use threads to handle file uploads, the user can continue to use the application while the upload is being processed in the background.</li><li>A web server that needs to handle multiple requests simultaneously. By using threads, the web server can create a new thread for each incoming request and handle them concurrently, improving the server's overall performance.</li></ol><h3 id="creating-and-starting-threads">Creating and Starting Threads</h3><p>In C#, you can create and start a new thread using the <code>Thread</code> class.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">DoWork</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Perform some work</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Thread</span> thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">ThreadStart</span><span class="token punctuation">(</span>DoWork<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+thread<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This will create a new thread and start executing the <code>DoWork</code> method in the background.</p><h3 id="synchronization">Synchronization</h3><p>When multiple threads access shared resources, there is a risk of data corruption and race conditions. To prevent this, synchronization techniques can be used to ensure that only one thread can access a shared resource at a time.</p><p>One common technique for synchronization is the use of locks.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">Counter</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">int</span></span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">object</span></span> lockObject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">object</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">lock</span> <span class="token punctuation">(</span>lockObject<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Count
+    <span class="token punctuation">{</span>
+        <span class="token keyword">get</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> count<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Counter</span> counter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Thread</span> thread1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">1000000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        counter<span class="token punctuation">.</span><span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Thread</span> thread2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">1000000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        counter<span class="token punctuation">.</span><span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+thread1<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+thread2<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+thread1<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+thread2<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This will output <code>2000000</code>, which is the expected result since both threads are incrementing the counter one million times each.</p><h3 id="thread-safety">Thread Safety</h3><p>Thread safety is the property of an object or method that ensures that it can be safely used by multiple threads at the same time without causing data corruption or race conditions.</p><p>One way to achieve thread safety is through the use of the <code>lock</code> keyword, as demonstrated in the previous example. Another way is to use <code>immutable objects</code>, which cannot be modified once they are created.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">class</span> <span class="token class-name">ImmutableCounter</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name"><span class="token keyword">int</span></span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">ImmutableCounter</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> count<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> count<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name">ImmutableCounter</span> <span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ImmutableCounter</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Count
+    <span class="token punctuation">{</span>
+        <span class="token keyword">get</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> count<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">ImmutableCounter</span> counter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ImmutableCounter</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Thread</span> thread1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">1000000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        counter <span class="token operator">=</span> counter<span class="token punctuation">.</span><span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Thread</span> thread2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">1000000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        counter <span class="token operator">=</span> counter<span class="token punctuation">.</span><span class="token function">Increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+thread1<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+thread2<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+thread1<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+thread2<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This will output <code>2000000</code>, which is the expected result since both threads are creating new instances of the <code>ImmutableCounter</code> object and incrementing the count. Since the object is immutable, there is no risk of data corruption or race conditions.</p><p>Using threads can make a program more responsive, improve its performance, and allow it to perform multiple tasks simultaneously, which can be essential in certain types of applications.</p><div class="kg-card kg-header-card kg-width-full kg-size-small kg-style-accent" style="" data-kg-background-image=""><h2 class="kg-header-card-header" id="advanced-c-features">Advanced C# Features</h2></div><p>C# is a powerful and versatile programming language that includes a variety of advanced features to help you write efficient, flexible, and maintainable code. Here are some of the most useful advanced features of C#, along with code examples to illustrate how they work.</p><h3 id="delegates">Delegates</h3><p>A <code>delegate</code> is a type that represents a method signature, allowing you to pass methods as arguments to other methods or store them as variables. Delegates are commonly used in event handling and callback scenarios.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">delegate</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">MyDelegate</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyClass</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">event</span> <span class="token class-name">MyDelegate</span> MyEvent<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">RaiseEvent</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> message<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        MyEvent<span class="token punctuation">?.</span><span class="token function">Invoke</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">MyClass</span> myClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        myClass<span class="token punctuation">.</span>MyEvent <span class="token operator">+=</span> MyEventHandler<span class="token punctuation">;</span>
+        myClass<span class="token punctuation">.</span><span class="token function">RaiseEvent</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">MyEventHandler</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> message<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This code creates a custom delegate type <code>MyDelegate</code>, and then defines a class <code>MyClass</code> with an event of that type. In the <code>Main</code> method, we create an instance of <code>MyClass</code>, attach a method <code>MyEventHandler</code> to the event, and then raise the event with a message. The <code>MyEventHandler</code> method is called and prints the message to the console.</p><h3 id="extension-methods">Extension Methods</h3><p>Extension methods allow you to add methods to an existing class without modifying its source code. This is useful when you want to add functionality to a class that you don't have control over, or when you want to group related functionality into a single class.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">StringExtensions</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">bool</span></span> <span class="token function">IsPalindrome</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token class-name"><span class="token keyword">string</span></span> str<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span>Length <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> str<span class="token punctuation">[</span>str<span class="token punctuation">.</span>Length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name"><span class="token keyword">string</span></span> str1 <span class="token operator">=</span> <span class="token string">"racecar"</span><span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">string</span></span> str2 <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span><span class="token function">IsPalindrome</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>str2<span class="token punctuation">.</span><span class="token function">IsPalindrome</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This code defines a static class <code>StringExtensions</code> with an extension method <code>IsPalindrome</code>, which determines whether a string is a palindrome. We then call this method on two strings in the <code>Main</code> method and print the results to the console.</p><div class="kg-card kg-callout-card kg-callout-card-blue"><div class="kg-callout-emoji">🤓</div><div class="kg-callout-text">A <strong>palindrome</strong> is a word, phrase, or sentence that reads the same way forwards and backward. For example, "<strong>racecar</strong>" is a palindrome because if you spell it backward it still says "<strong>racecar</strong>".</div></div><p><strong>3. Lambda Expressions</strong></p><p>Lambda expressions are a concise way to define anonymous methods, allowing you to write code inline without creating a separate method.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> numbers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">List<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> evenNumbers <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span>n <span class="token operator">=&gt;</span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> number <span class="token keyword">in</span> evenNumbers<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This code creates a list of integers and then uses a <code>lambda expression</code> to filter out the even numbers using the <code>Where</code> method. We then loop over the even numbers and print them to the console. When would this be useful?</p><p>Let's say you have a large collection of numbers, and you need to perform some operation on only the even numbers in the collection. Instead of manually iterating over the collection and checking each number to see if it's even, you can use <code>LINQ</code> to quickly and efficiently filter the collection.</p><h3 id="generics">Generics</h3><p>Generics allow you to write code that can work with multiple data types, improving code reuse and reducing the need for type casting.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Stack<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">List<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span> items <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">List<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Push</span><span class="token punctuation">(</span><span class="token class-name">T</span> item<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        items<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name">T</span> <span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">T</span> item <span class="token operator">=</span> items<span class="token punctuation">.</span><span class="token function">Last</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        items<span class="token punctuation">.</span><span class="token function">RemoveAt</span><span class="token punctuation">(</span>items<span class="token punctuation">.</span>Count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">Stack<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Stack<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stack<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stack<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stack<span class="token punctuation">.</span><span class="token function">Push</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">Pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This code defines a generic <code>Stack</code> class that can hold any data type. We then create an instance of the class with <code>int</code> as the type parameter, push three integers onto the stack, and then pop them off and print them to the console. This could be done for any type.</p><h3 id="asyncawait">Async/Await</h3><p><code>Async</code> / <code>await</code> is a programming pattern that allows you to write <strong>asynchronous</strong> code that is easier to read and maintain than traditional callback-based code.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task</span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">HttpClient</span> httpClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">HttpClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">string</span></span> response <span class="token operator">=</span> <span class="token keyword">await</span> httpClient<span class="token punctuation">.</span><span class="token function">GetStringAsync</span><span class="token punctuation">(</span><span class="token string">"https://jsonplaceholder.typicode.com/todos/1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This code uses the <code>HttpClient</code> class to make an asynchronous HTTP request to a web API and retrieve some data. We use the <code>async</code> keyword to mark the <code>Main</code> method as asynchronous, and then use the <code>await</code> keyword to wait for the result of the HTTP request before printing it to the console. Below is the result of the API call.</p><div class="code-toolbar"><pre class="language-json line-numbers" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"userId"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"delectus aut autem"</span><span class="token punctuation">,</span>
+  <span class="token property">"completed"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><h3 id="attributes">Attributes</h3><p>Attributes are a way to add metadata to your code, allowing you to specify additional information about <code>types</code>, <code>methods</code>, and <code>properties</code> that can be used by <code>tools</code> and <code>libraries</code>.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Serializable</span></span><span class="token punctuation">]</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> Age <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">Person</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Person</span> <span class="token punctuation">{</span> Name <span class="token operator">=</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span> Age <span class="token operator">=</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">XmlSerializer</span> serializer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">XmlSerializer</span><span class="token punctuation">(</span><span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name">Person</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">StringWriter</span> writer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">StringWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        serializer<span class="token punctuation">.</span><span class="token function">Serialize</span><span class="token punctuation">(</span>writer<span class="token punctuation">,</span> person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>writer<span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>This code defines a <code>Person</code> class with two properties and marks it with the <code>[Serializable]</code> attribute. We then use the <code>XmlSerializer</code> class to serialize an instance of the <code>Person</code> class to an XML string, which we print to the console.</p><h3 id="reflection">Reflection</h3><p>Reflection allows you to inspect and modify your code at runtime, enabling powerful runtime behaviors such as dependency injection and dynamic loading of plugins.</p><div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyClass</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> MyProperty <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">MyMethod</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> message<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">MyClass</span> myClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">PropertyInfo</span> propertyInfo <span class="token operator">=</span> <span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name">MyClass</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GetProperty</span><span class="token punctuation">(</span><span class="token string">"MyProperty"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        propertyInfo<span class="token punctuation">.</span><span class="token function">SetValue</span><span class="token punctuation">(</span>myClass<span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">MethodInfo</span> methodInfo <span class="token operator">=</span> <span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name">MyClass</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GetMethod</span><span class="token punctuation">(</span><span class="token string">"MyMethod"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div><p>If you would like to know more about reflection in .NET, you can have a look at my article below.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://web.archive.org/web/20231129052052/https://blog.christian-schou.dk/learn-to-understand-reflection-in-dot-net/" target="_blank"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Learn To Understand Reflection in .NET in a few minutes</div><div class="kg-bookmark-description">Reflection is used to dynamically create an instance of a type, bind the type to an existing object, or get the type from an existing object. In this tutorial about reflection in .NET I will break it down into human-readable content with examples.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/cropped-cs-logo-color-retina.png" alt=""><span class="kg-bookmark-author">Tech with Christian</span><span class="kg-bookmark-publisher">Christian Schou</span></div></div><div class="kg-bookmark-thumbnail"><img src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/asp-net-c-sharp-reflection-featured-image-christian-schou.png" alt=""></div></a></figure><h2 id="summary">Summary</h2><p>In this C# cheat sheet, we covered a range of essential topics in C#, from the basics of the language to advanced features like multithreading and reflection. We've seen how C# supports object-oriented programming through concepts like classes, inheritance, and encapsulation, and we've explored some of the powerful libraries and tools available in C# for handling collections, working with files, and querying data using LINQ.</p><p>By mastering these fundamental concepts and features, you'll be well-equipped to tackle a wide range of programming challenges in C# and build powerful, efficient, and scalable applications. Whether you're a seasoned developer or just starting out, C# is a language that has something to offer everyone.</p><p>So if you're looking to improve your programming skills and take your C# development to the next level, be sure to continue exploring the language and its many features, and don't be afraid to experiment and push the boundaries of what's possible. With practice and perseverance, you'll soon be writing world-class code that can take on even the most complex programming challenges with ease.</p>
+    </div>
+  </article>
+
+
+      </div>
+
+        <div class="content-wrap">
+
+        </div>
+
+         
+   
+
+    </main>
+
+          </div>
+        </div>
+
+
+        </div>
+
+
+    <script>
+      if (CONFIG.ENABLE_PWA && 'serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+
+      <script>
+    // Copy button
+    const copyBtn = document.querySelector('.js-copy-link');
+    if (copyBtn) {
+      copyBtn.onclick = function(event) {
+        copyToClipboard(event.currentTarget, event.currentTarget.getAttribute('data-url'));
+      }
+    }
+    
+    /** 
+    * Copy to clipboard
+    * @src - source element
+    * @str - string to copy
+    */ 
+    const copyToClipboard = function(src, str) {
+      const el = document.createElement('textarea');
+      el.value = str;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+
+      src.classList.add('has-tooltip');
+      src.setAttribute('data-label', 'Copied!');
+
+      src.onmouseleave = function() { 
+        src.classList.remove('has-tooltip');
+        setTimeout(function(){
+          src.setAttribute('data-label', '');
+        }, 500); 
+      }
+    };
+  </script>
+
+  <script>
+    document.addEventListener('readystatechange', function(event) {
+      if (document.readyState === "complete") {
+        // table of contents toggle
+        const tocToggleBtn = document.querySelector('.js-toc-toggle');
+        const postToc = document.querySelector('.js-post-toc');
+
+        // media query for TOC function
+        const mqSmall = window.matchMedia('(max-width: 767px)');
+        const mqLarge = window.matchMedia('(min-width: 768px)');
+
+        if (tocToggleBtn && postToc) {
+          // if device is large, show the TOC by default
+          if (mqLarge.matches) postToc.classList.add('is-active');
+
+          // open/close the TOC
+          tocToggleBtn.onclick = function(event) {
+            postToc.classList.toggle('is-active');
+          }
+        }
+
+        // get header height as threshold
+        const header = getComputedStyle(document.documentElement)
+                        .getPropertyValue('--global-header-height');
+
+        const threshold = 200;
+        const headerHeight = header ? parseInt(header) + 20 : 100;
+        const headingsOffset = headerHeight + 10;
+
+        /*window.addEventListener('scroll', function(event) {
+          //Scroll back to top
+          const scrollPos = window.scrollY || 
+                            window.scrollTop || 
+                            document.getElementsByTagName('html')[0].scrollTop;
+          scrollPos > threshold ? postToc.classList.add('is-visible') 
+                            : postToc.classList.remove('is-visible');
+        }, false);*/
+
+        if (postToc) {
+          tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.js-toc',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.js-toc-content',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h1, h2, h3',
+            // For headings inside relative or absolute positioned containers within content.
+            hasInnerContainers: false,
+            // smooth scroll
+            scrollSmooth: false,
+            // offset
+            headingsOffset: headingsOffset,
+            // onclick event
+            onClick: function(e){ 
+              e.preventDefault();
+              const href = this.getAttribute('href');
+              if (href) {
+                const el = document.querySelector(`#${CSS.escape(href.substring(1))}`);
+                let offset;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = el.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                //const headerHeight = header ? parseInt(header) + 20 : 100;
+                /*if(CONFIG.ENABLE_FLOATING_HEADER === true) {
+                  offset = GLOBAL.SCROLL_POS > elementPosition ? headerHeight : 20;
+                } else {
+                  offset = headerHeight;
+                }*/
+                  if(CONFIG.ENABLE_FLOATING_HEADER === true) {
+                    offset = GLOBAL.SCROLL_POS > elementPosition ? headerHeight : 20;
+                  } else {
+                    offset = headerHeight;
+                  }
+                ;
+                GLOBAL.SCROLL_POS = elementPosition;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              }
+
+              // if on small screen close the TOC when clicking on item
+              if (mqSmall.matches) postToc.classList.remove('is-active');
+            }
+          });
+        }
+      }
+    });
+  </script>
+
+  <script>
+    const scrollTop = document.querySelector('.js-scroll-top');
+
+    if (scrollTop) {
+      const offset = 80;
+
+      window.addEventListener('scroll', function(event) {
+        //Scroll back to top
+        const scrollPos = window.scrollY || window.scrollTop || document.getElementsByTagName('html')[0].scrollTop;
+        scrollPos > offset ? scrollTop.classList.add('is-active') : scrollTop.classList.remove('is-active');
+      
+      }, false);
+    }
+  </script>
+
+  <script>
+    // Give the parameter a variable name
+    const qsParams = new URLSearchParams(window.location.search);
+    const isAction = qsParams.has('action');
+    const isStripe = qsParams.has('stripe');
+    const success = qsParams.get('success');
+    const action = qsParams.get('action');
+    const stripe = qsParams.get('stripe');
+
+    if (qsParams && isAction) {
+      if (success === "true") {
+        switch (action) {
+          case 'subscribe':
+            document.body.classList.add('subscribe-success')
+            break;
+          case 'signup': 
+            document.body.classList.add('signup-success');
+            break;
+          case 'signin':
+            document.body.classList.add('signin-success');
+            break;
+          default:
+            break;
+        }
+      } else {
+        document.body.classList.add('link-expired');
+      }
+    }
+
+    if (qsParams && isStripe) {
+      switch (stripe) {
+        case 'success':
+          document.body.classList.add('checkout-success');
+          break;
+        case 'billing-update-success':
+          document.body.classList.add('billing-success');
+          break;
+        case 'billing-update-cancel':
+          document.body.classList.add('billing-cancel');
+          break;
+        default:
+          break;
+      }
+    }
+    
+    /**
+    * Clean URI
+    */
+    function clearURI() {
+      window.history.replaceState({}, '', `${window.location.pathname}`);
+    }
+  </script>
+
+
+    <script src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/prism-v1.js.télécharger"></script>
+<script type="text/javascript">
+	var links = document.getElementsByTagName("article")[0].querySelectorAll('a');
+    var a = new RegExp('/' + window.location.host + '/');
+	links.forEach((link) => {
+		if(!a.test(link.href)) {
+			link.setAttribute("target","_blank");
+		}
+	});
+</script>
+<script>document.body.className += ' ' + 'line-numbers';</script>
+<script defer="" src="./The Ultimate C# Cheat Sheet - Master C# Programming 👨_💻_files/beacon.min.js.télécharger" data-cf-beacon="{&quot;token&quot;: &quot;0bc526f66bb647c484c12849f74bdd89&quot;}"></script>
+  
+</html>
