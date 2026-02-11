@@ -32,14 +32,14 @@
 
         public void DistributionDesCartes()
         {
-            var deck = GenerationDesCarte();
+            Deck deck = GenerationDesCarte();
 
             _joueur1.Deck = new Deck();
             _joueur2.Deck = new Deck();
 
-            var nombreCartes = deck.NombreDeCartes();
+            int nombreCartes = deck.NombreDeCartes();
 
-            for (var i = 0; i < nombreCartes; i++)
+            for (int i = 0; i < nombreCartes; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -54,8 +54,8 @@
 
         public void Tour()
         {
-            var carteJoueur1 = _joueur1.Deck.Piocher();
-            var carteJoueur2 = _joueur2.Deck.Piocher();
+            Carte carteJoueur1 = _joueur1.Deck.Piocher();
+            Carte carteJoueur2 = _joueur2.Deck.Piocher();
 
             Console.WriteLine($"{_joueur1.Name()} à {carteJoueur1.GetText()}");
             Console.WriteLine($"{_joueur2.Name()} à {carteJoueur2.GetText()}");
@@ -75,7 +75,7 @@
             else
             {
                 // Bataille
-                var cartes = new List<Carte>();
+                List<Carte> cartes = new List<Carte>();
                 cartes.Add(carteJoueur1);
                 cartes.Add(carteJoueur2);
 
@@ -118,10 +118,10 @@
 
         public Deck GenerationDesCarte()
         {
-            var deck = new Deck();
-            for(var i = 0; i < 4; i++)
+            Deck deck = new Deck();
+            for(int i = 0; i < 4; i++)
             {
-                for(var j = 0; j < 13; j++)
+                for(int j = 0; j < 13; j++)
                 {
                     deck.AjouterCarte(new Carte(i, j));
                 }

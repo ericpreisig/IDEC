@@ -9,7 +9,7 @@
             Console.WriteLine("Enter le nom du joueur 2");
             Joueur joueur2 = new Joueur(Console.ReadLine());
 
-            var jeu = new Jeu(joueur1, joueur2);
+            Jeu jeu = new Jeu(joueur1, joueur2);
             jeu.Start();
         }
     }

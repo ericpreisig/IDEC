@@ -20,12 +20,12 @@
 
         public void Melanger()
         {
-            var random = new Random();
+            Random random = new Random();
 
-            for(var i = 0; i < _cartes.Count; i++)
+            for(int i = 0; i < _cartes.Count; i++)
             {
                 int newIndex = random.Next(0, _cartes.Count);
-                var oldCarte = _cartes[i];
+                Carte oldCarte = _cartes[i];
                 _cartes[i] = _cartes[newIndex];
                 _cartes[newIndex] = oldCarte;
             }
@@ -39,7 +39,7 @@
                 return new Carte(0, 0);
             }
 
-            var carte = _cartes[0];
+            Carte carte = _cartes[0];
             _cartes.RemoveAt(0);
             return carte;
         }
