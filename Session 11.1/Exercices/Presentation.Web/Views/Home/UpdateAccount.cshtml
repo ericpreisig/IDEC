@@ -1,15 +1,20 @@
-﻿@model UserUpdateViewModel
+@model UserUpdateViewModel
 
-<h1>Mise à jour du compte</h1>
+<h1>Mise a jour du compte</h1>
 
-<form asp-action="Update" asp-route-Id="@Model.Id">
+@if (ViewBag.ErrorMessage != null)
+{
+    <p class="text-danger">@ViewBag.ErrorMessage</p>
+}
+
+<form asp-action="Update" asp-route-id="@Model.Id" method="post">
     <div>
         <label>Nouveau login</label>
         <input type="text" name="login" />
     </div>
     <div>
         <label>Nouveau mot de passe</label>
-        <input type="text" name="password" />
+        <input type="password" name="password" />
     </div>
-    <button>Mettre à jour</button>
+    <button>Mettre a jour</button>
 </form>

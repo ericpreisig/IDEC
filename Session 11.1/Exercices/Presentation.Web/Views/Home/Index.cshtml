@@ -1,9 +1,15 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
+
 <h1>Connexion</h1>
 
-<form asp-action="Login">
+@if (ViewBag.ErrorMessage != null)
+{
+    <p class="text-danger">@ViewBag.ErrorMessage</p>
+}
+
+<form asp-action="Login" method="post">
     <div>
         <label>Login</label>
         <input type="text" name="login" />
@@ -15,6 +21,5 @@
     <button>Se connecter</button>
 </form>
 
-
-<a asp-action="NewAccount">Créer un nouveau compte</a>
+<a asp-action="NewAccount">Creer un nouveau compte</a>
 <a asp-action="Users">Afficher tous les utilisateurs</a>

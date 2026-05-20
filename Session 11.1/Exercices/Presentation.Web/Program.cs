@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using Presentation.Web.Data;
+
 namespace Presentation.Web
 {
     public class Program
@@ -8,6 +12,15 @@ namespace Presentation.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ProductionDbContext>(options =>
+                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/";
+                    options.AccessDeniedPath = "/";
+                });
 
             var app = builder.Build();
 
@@ -24,11 +37,18 @@ namespace Presentation.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ProductionDbContext>();
+                context.Database.EnsureCreated();
+            }
 
             app.Run();
         }

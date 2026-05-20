@@ -1,6 +1,11 @@
-﻿<h1>Création d'un nouveau compte</h1>
+<h1>Creation d'un nouveau compte</h1>
 
-<form asp-action="Register">
+@if (ViewBag.ErrorMessage != null)
+{
+    <p class="text-danger">@ViewBag.ErrorMessage</p>
+}
+
+<form asp-action="Register" method="post">
     <div>
         <label>Login</label>
         <input type="text" name="login" />
